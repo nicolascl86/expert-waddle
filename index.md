@@ -1,5 +1,5 @@
 ---
 title: Welcome to my blog
 ---
-expert wadddle blah blah
+Ok I think this Jekyll-GHPages combo works
 
