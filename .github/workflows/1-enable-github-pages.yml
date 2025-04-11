@@ -17,18 +17,15 @@ permissions:
 
 jobs:
   # Get the current step to only run the main job when the learner is on the same step.
-  get_current_step:
-    name: Check current step number
-    runs-on: ubuntu-latest
+  on_enable_github_pages:
+    ...
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - id: get_step
+      - name: Set Environment Variables
         run: |
-          echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
-    outputs:
-      current_step: ${{ steps.get_step.outputs.current_step }}
-
+          echo "TO_STEP=2" >> $GITHUB_ENV
+          echo "FROM_STEP=1" >> $GITHUB_ENV
+          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+      ...
   on_enable_github_pages:
     name: On enable github pages
     needs: get_current_step
